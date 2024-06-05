@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+    <style>
+        body {
+            font-family: 'Impact', Impact, Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+            margin-bottom: 50px;
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 10px;
+            border: 3px solid #bbb;
+            border-radius: 15px 0 0 15px;
+            border-right: none;
+            margin-left: 20px;
+        }
+        .input-group button {
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 0 15px 15px 0;
+            transition: background-color 0.3s;
+        }
+        .input-group button:hover {
+            background-color: red;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f3d2f1;
+            border: 0px solid gray;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            transition: background-color 0.3s;
+        }
+        ul li.done {
+            text-decoration: line-through;
+            color: gray;
+        }
+        ul li:hover {
+            background-color: gray;
+        }
+        .task-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .task-buttons span {
+            cursor: pointer;
+        }
+        .edit {
+            color: green;
+            font-weight: bold;
+        }
+        .done {
+            color: blue;
+            font-weight: bold;
+        }
+        .delete {
+            color: red;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 200px;
+            margin-left: 20px;
+        }
+        footer a {
+            font-weight: bold;
+            text-decoration: underline;
+            color: blue;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: red;
+        }
+        h1 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><u>MY TO-DO LIST</u></h1>
+      </br>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Add A New Task...">
+            <button onclick="addTask()">ADD TASK</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+    <footer>
+        <a href="https://github.com/mouricedevs" target="_blank">©2024  GIFTED TECH</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', loadTasks);
+
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => {
+                renderTask(task.text, task.done);
+            });
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== "") {
+                renderTask(taskText);
+                saveTask(taskText, false);
+                taskInput.value = "";
+            }
+        }
+
+        function renderTask(taskText, isDone = false) {
+            const taskList = document.getElementById('taskList');
+            const li = document.createElement('li');
+            li.textContent = taskText;
+            if (isDone) {
+                li.classList.add('done');
+            }
+
+            const taskButtons = document.createElement('div');
+            taskButtons.className = 'task-buttons';
+
+            const editBtn = document.createElement('span');
+            editBtn.textContent = "Edit";
+            editBtn.className = "edit";
+            editBtn.onclick = function() {
+                const newTaskText = prompt("EDIT TASK:", taskText);
+                if (newTaskText && newTaskText.trim() !== "") {
+                    li.firstChild.nodeValue = newTaskText.trim();
+                    updateTask(taskText, newTaskText.trim(), li.classList.contains('done'));
+                }
+            };
+
+            const doneBtn = document.createElement('span');
+            doneBtn.textContent = isDone ? "Undo" : "Done";
+            doneBtn.className = "done";
+            doneBtn.onclick = function() {
+                li.classList.toggle('done');
+                doneBtn.textContent = li.classList.contains('done') ? "Undo" : "Done";
+                updateTask(taskText, taskText, li.classList.contains('done'));
+            };
+
+            const deleteBtn = document.createElement('span');
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "delete";
+            deleteBtn.onclick = function() {
+                taskList.removeChild(li);
+                deleteTask(taskText);
+            };
+
+            taskButtons.appendChild(editBtn);
+            taskButtons.appendChild(doneBtn);
+            taskButtons.appendChild(deleteBtn);
+
+            li.appendChild(taskButtons);
+            taskList.appendChild(li);
+        }
+
+        function saveTask(taskText, isDone) {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push({ text: taskText, done: isDone });
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function updateTask(oldText, newText, isDone) {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskIndex = tasks.findIndex(task => task.text === oldText);
+            if (taskIndex > -1) {
+                tasks[taskIndex] = { text: newText, done: isDone };
+            }
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function deleteTask(taskText) {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks = tasks.filter(task => task.text !== taskText);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        document.getElementById('taskInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+    </script>
+</body>
+  </html>
