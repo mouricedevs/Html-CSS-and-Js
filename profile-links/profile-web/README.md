@@ -1,8 +1,9 @@
-# Profile Web
+# Profile-Web
 ### By Gifted Tech ###
+
 ---
 
-***Deploy on [`VERCEL`](https://vercel.com/login).***
+***Deploy for free on [`VERCEL`](https://vercel.com/login), github-pages or your own hosting.***
 
 ```
 VERCEL PROCESS:
@@ -12,6 +13,6 @@ VERCEL PROCESS:
     4: Enter project name, env variables.
     5: And JUST CLICK "Deploy". 
 ```
-***Here's an Example [`OUTPUT`](https://gifted-tech.vercel.app).***
+***Here's an Example [`OUTPUT`](https://mouricedevs.github.io/Html-CSS-and-Js/profile-links/profile-web).***
 
 ---
