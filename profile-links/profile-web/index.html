@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZ2GBVV4SW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FZ2GBVV4SW');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifted Tech</title>
+    <style>
+        @property --rotate {
+            syntax: "<angle>";
+            initial-value: 132deg;
+            inherits: false;
+        }
+        :root {
+            --card-height: 65vh;
+            --card-width: calc(var(--card-height) / 1.5);
+        }
+        body {
+            min-height: 100vh;
+            background-color: #212534;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 2rem;
+            box-sizing: border-box;
+        }
+        .card {
+            background: #191c29;
+            width: calc(var(--card-width) * 1.0); /* Increase width */
+            height: calc(var(--card-height) * 1.0); /* Increase height */
+            padding: 3px;
+            position: relative;
+            border-radius: 6px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            font-size: 2em; /* Increase font size of gifted */
+            color: rgb(88 199 250 /0%);
+            cursor: pointer;
+            font-family: cursive;
+        }
+        .card:hover {
+            color: rgb(88 199 250 /100%);
+            transition: color 1s;
+        }
+        .card:hover:before, .card:hover:after {
+            animation: none;
+            opacity: 0;
+        }
+        .card::before {
+            content: "";
+            width: 104%;
+            height: 102%;
+            border-radius: 8px;
+            background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+            position: absolute;
+            z-index: -1;
+            top: -1%;
+            left: -2%;
+            animation: spin 2.5s linear infinite;
+        }
+        .card::after {
+            position: absolute;
+            content: "";
+            top: calc(var(--card-height) /6);
+            left: 0;
+            right: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            transform: scale(0.8);
+            filter: blur(calc(var(--card-height) /6));
+            background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+            opacity: 1;
+            transition: opacity .5s;
+            animation: spin 2.5s linear infinite;
+        }
+        @keyframes spin {
+            0% {
+                --rotate: 0deg;
+            }
+            100% {
+                --rotate: 360deg;
+            }
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .button {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .whatsapp {
+            background-color: #25D366;
+        }
+        .profile {
+            background-color: red;
+        }
+        .button:hover {
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        Welcome To Gifted Tech
+    </div>
+    <div class="button-container">
+        <button class="button whatsapp" onclick="redirectToWhatsApp()">Contact Me</button>
+        <button class="button profile" onclick="redirectToProfile()">Main Menu</button>
+    </div>
+
+    <script>
+        // Define the message for WhatsApp
+        let whatsappMessage = "Gifted Tech 😊! I have just installed your profile template and indeed it's good 😊. Continue with that spirit Broh😊🤝. My Name is: ";
+
+        // Encode the message for URL
+        let encodedWhatsAppMessage = encodeURIComponent(whatsappMessage);
+
+        // Construct the WhatsApp URL with the message
+        let whatsappURL = `https://wa.me/254728782591?text=${encodedWhatsAppMessage}`;
+
+        // Function to redirect to WhatsApp
+        function redirectToWhatsApp() {
+            window.location.href = whatsappURL;
+        }
+
+        // Function to redirect to Profile
+        function redirectToProfile() {
+            window.location.href = "main.html";
+        }
+
+        // Wait for 5 seconds before showing buttons
+        setTimeout(function() {
+            document.querySelector('.button-container').style.display = 'flex';
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+</body>
+  </html>
