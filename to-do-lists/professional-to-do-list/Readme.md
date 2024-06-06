@@ -13,6 +13,6 @@ VERCEL PROCESS:
     4: Enter project name, env variables.
     5: And JUST CLICK "Deploy". 
 ```
-***Here's an Example [`OUTPUT`](https://mouricedevs.github.io/Html-CSS-and-Js/to-do-list).***
+***Here's an Example [`OUTPUT`](https://mouricedevs.github.io/Html-CSS-and-Js/to-do-lists/professional-to-do-list).***
 
 ---
