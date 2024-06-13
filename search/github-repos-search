@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GITHUB | REPOS FETCHER</title>
+    <meta name="description" content="A simple tool to fetch and display public repositories of a GitHub user.">
+    <link rel="stylesheet" href="https://assets.giftedtechnexus.co.ke/css/git-repo-search/styles.css">
+    <link rel="icon" href="https://assets.giftedtechnexus.co.ke/images/qr1/gifted.png" type="image/x-icon">
+  </head>
+  <body>
+    <h3 style="font-size: 22px; color: purple;"><center>𝐆𝐈𝐓𝐇𝐔𝐁 𝐑𝐄𝐏𝐎𝐒 𝐅𝐄𝐓𝐂𝐇𝐄𝐑</center></h3>
+    <h5 style="font-size: 14px;"><center><i>𝑪𝒐𝒅𝒆𝒅 𝑩𝒚 𝑮𝒊𝒇𝒕𝒆𝒅 𝑻𝒆𝒄𝒉</i></center></h5>
+    <p><center>This Tool is Only Capable of Fetching Public Repositories of a User...LOL...</center></p>
+    <div class="repos-container">
+      <div class="get-repos">
+        <input type="text" placeholder="Enter Github Username" style="font-size: 14px; font-weight: bold;">
+        <span class="get-button">ғᴇᴛᴄʜ ʀᴇᴘᴏs</span>
+      </div>
+      <div class="show-data">
+        <span>𝑵𝒐 𝑫𝒂𝒕𝒂 𝒕𝒐 𝑺𝒉𝒐𝒘...</span>
+      </div>
+    </div>
+    <footer>
+      <b>
+      <a href="https://github.com/mouricedevs" rel="noopener noreferrer">
+        &copy; <span id="year"></span> ɢɪғᴛᴇᴅ ᴛᴇᴄʜ
+      </a>
+      </b>
+    </footer>
+    <script src="https://assets.giftedtechnexus.co.ke/js/git-repo-search/script.js"></script>
+    <script>
+      // Set the current year in the footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
