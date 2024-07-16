@@ -3,6 +3,7 @@
 <html lang="en" dir="ltr">
 
 <head>
+
     <meta charset="utf-8">
 
     <title>𝐆𝐢𝐟𝐭𝐞𝐝 𝐂𝐡𝐚𝐭 𝐆𝐩𝐭𝟒</title>
@@ -11,15 +12,553 @@
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="𝑪𝒉𝒂𝒕 𝑾𝒊𝒕𝒉 𝑮𝒑𝒕-𝟒 𝑴𝒐𝒅𝒆𝒍 𝑭𝒐𝒓 𝑭𝒓𝒆𝒆">
+      <meta name="description" content="𝑪𝒉𝒂𝒕 𝑾𝒊𝒕𝒉 𝑮𝒑𝒕-𝟒 𝑴𝒐𝒅𝒆𝒍 𝑭𝒐𝒓 𝑭𝒓𝒆𝒆">
 
     <meta name="keywords" content="Chatbot, gpt, artificial intelligence, AI, ChatGPT">
 
-    <link href="https://assets.giftedtechnexus.co.ke/css/gpt4v2/gifted.css" rel="stylesheet">
+    <style>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    /* Import Google font - Poppins */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+
+  margin: 0;
+
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+:root {
+
+  --text-color: #FFFFFF;
+
+  --icon-color: #ACACBE;
+
+  --icon-hover-bg: #595959;
+
+  --placeholder-color: #dcdcdc;
+
+  --outgoing-chat-bg: #1f1f1f;
+
+  --incoming-chat-bg: #303030;
+
+  --outgoing-chat-border: #343541;
+
+  --incoming-chat-border: #444654;
+
+}
+
+.light-mode {
+
+  --text-color: #343541;
+
+  --icon-color: #a9a9bc;
+
+  --icon-hover-bg: #f1f1f3;
+
+  --placeholder-color: #6c6c6c;
+
+  --outgoing-chat-bg: #FFFFFF;
+
+  --incoming-chat-bg: #F7F7F8;
+
+  --outgoing-chat-border: #FFFFFF;
+
+  --incoming-chat-border: #D9D9E3;
+
+}
+
+body {
+
+  background: var(--outgoing-chat-bg);
+
+}
+
+
+
+/* Chats container styling */
+
+.chat-container {
+
+  overflow-y: auto;
+
+  max-height: 100vh;
+
+  padding-bottom: 150px;
+
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar {
+
+  width: 6px;
+
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar-track {
+
+  background: var(--incoming-chat-bg);
+
+  border-radius: 45px;
+
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar-thumb {
+
+  background: var(--icon-color);
+
+  border-radius: 45px;
+
+}
+
+.default-text {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  height: 70vh;
+
+  padding: 0 10px;
+
+  text-align: center;
+
+  color: green;
+
+}
+
+.default-text h1 {
+
+  font-size: 2rem;
+
+}
+
+.default-text p {
+
+  margin-top: 5px;
+
+  font-size: 0.5rem;
+
+}
+
+
+.chat-container .chat {
+  padding: 25px 10px;
+  display: flex;
+  color: var(--text-color);
+}
+
+.chat-container .chat.outgoing {
+  background: transparent;
+  border: 1px solid var(--outgoing-chat-border);
+  justify-content: flex-end;
+  text-align: right;
+  font-style: italic;
+  flex-direction: row-reverse; /* This will push the content to the right */
+}
+
+.chat-container .chat .chat-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chat-container .chat.outgoing .chat-details {
+  margin-left: auto; /* This ensures the chat details are aligned to the right */
+}
+
+
+
+.chat-container .chat.incoming {
+
+  background: transparent;
+
+  font-style: light;
+  
+  border: 0.5px solid var(--incoming-chat-border);
+
+}
+
+.chat .chat-content {
+
+  display: flex;
+
+  max-width: 1200px;
+
+  width: 100%;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+}
+
+span.material-symbols-rounded {
+
+  user-select: none;
+
+  cursor: pointer;
+
+}
+
+.chat .chat-content span {
+
+  cursor: pointer;
+
+  font-size: 0.5rem;
+
+  color: var(--icon-color);
+
+  visibility: hidden;
+
+}
+
+.chat:hover .chat-content:not(:has(.typing-animation), :has(.error)) span {
+
+  visibility: visible;
+
+}
+
+.chat .chat-details {
+
+  display: flex;
+
+  align-items: center;
+
+}
+
+.chat .chat-details img {
+
+  width: 35px;
+
+  height: 35px;
+
+  align-self: flex-start;
+
+  object-fit: cover;
+
+  border-radius: 2px;
+
+}
+
+.chat .chat-details p {
+
+  white-space: pre-wrap;
+
+  font-size: 1.05rem;
+
+  padding: 0 50px 0 25px;
+
+  color: var(--text-color);
+
+  word-break: break-word;
+
+}
+
+.chat .chat-details p.error {
+
+  color: #e55865;
+
+}
+
+.chat .typing-animation {
+
+  padding-left: 25px;
+
+  display: inline-flex;
+
+}
+
+.typing-animation .typing-dot {
+
+  height: 7px;
+
+  width: 7px;
+
+  border-radius: 50%;
+
+  margin: 0 3px;
+
+  opacity: 0.7;
+
+  background: var(--text-color);
+
+  animation: animateDots 1.5s var(--delay) ease-in-out infinite;
+
+}
+
+.typing-animation .typing-dot:first-child {
+
+  margin-left: 0;
+
+}
+
+@keyframes animateDots {
+
+  0%,44% {
+
+    transform: translateY(0px);
+
+  }
+
+  28% {
+
+    opacity: 0.4;
+
+    transform: translateY(-6px);
+
+  }
+
+  44% {
+
+    opacity: 0.2;
+
+  }
+
+}
+
+
+
+/* Typing container styling */
+
+.typing-container {
+
+  position: fixed;
+
+  bottom: 0;
+
+  width: 100%;
+
+  display: flex;
+
+  padding: 5px 20px;
+
+  justify-content: center;
+
+  background: var(--outgoing-chat-bg);
+
+  border-top: 1px solid var(--incoming-chat-border);
+
+}
+
+.typing-container .typing-content {
+
+  display: flex;
+
+  max-width: 950px;
+
+  width: 100%;
+
+  align-items: flex-end;
+
+}
+
+.typing-container .typing-textarea {
+
+  width: 100%;
+
+  display: flex;
+
+  position: relative;
+
+}
+
+.typing-textarea textarea {
+
+  resize: none;
+
+  height: 55px;
+
+  width: 100%;
+
+  border: none;
+
+  padding: 15px 45px 15px 20px;
+
+  color: black;
+
+  font-size: 1rem;
+
+  border-radius: 22px;
+  
+  margin-left: 5px;
+
+  max-height: 250px;
+
+  overflow-y: auto;
+
+  background: var(--incoming-chat-bg);
+
+  outline: 4px solid var(--incoming-chat-border);
+
+}
+
+.typing-textarea textarea::placeholder {
+
+  color: green;
+  
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+.typing-content span {
+
+  width: 45px;
+
+  height: 45px;
+
+  display: flex;
+
+  border-radius: 24px;
+
+  font-size: 1rem;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: blue;
+
+}
+
+.typing-textarea span {
+
+  position: absolute;
+
+  right: 0;
+
+  bottom: 0;
+
+  visibility: hidden;
+
+}
+
+.typing-textarea textarea:valid ~ span {
+
+  visibility: visible;
+  border-radius: 20px:
+
+}
+
+.typing-controls {
+
+  display: flex;
+
+}
+
+.typing-controls span {
+
+  margin-left: 7px;
+
+  font-size: 1rem;
+
+  background: var(--incoming-chat-bg);
+
+  outline: 1px solid var(--incoming-chat-border);
+
+}
+
+.typing-controls span:hover {
+
+  background: var(--icon-hover-bg);
+
+}
+
+
+
+/* Reponsive Media Query */
+
+@media screen and (max-width: 600px) {
+
+  .default-text h1 {
+
+    font-size: 2rem;
+
+  }
+
+  :where(.default-text p, textarea, .chat p) {
+
+    font-size: 0.95rem!important;
+
+  }
+
+  .chat-container .chat {
+
+    padding: 10px 10px;
+
+  }
+
+  .chat-container .chat img {
+
+    height: 32px;
+
+    width: 35px;
+
+  }
+
+  .chat-container .chat p {
+
+    padding: 0 20px;
+
+  }
+
+  .chat .chat-content:not(:has(.typing-animation), :has(.error)) span {
+
+    visibility: visible;
+
+  }
+         
+
+  .typing-container {
+
+    padding: 15px 10px;
+
+  }
+
+  .typing-textarea textarea {
+
+    height: 45px;
+
+    padding: 10px 40px 10px 10px;
+
+  }
+
+  .typing-content span {
+
+    height: 45px;
+
+    width: 45px;
+
+    margin-left: 5px;
+    margin-top: 5px;
+
+  }
+
+  span.material-symbols-rounded {
+
+    font-size: 1.25rem!important;
+
+  }
+  
+}
+
+  </style>
+
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
 
@@ -34,6 +573,8 @@
         	<div class="typing-controls">
 
                 <span id="theme-btn" class="material-symbols-rounded">send</span>
+
+                
 
             </div>
 
@@ -53,7 +594,178 @@
       
     </div>
       
-    <script src="https://assets.giftedtechnexus.co.ke/js/gpt4v2/gifted.js"></script>
+    <script>
+
+const chatInput = document.querySelector('#chat-input');
+
+const sendButton = document.querySelector('#send-btn');
+
+const chatContainer = document.querySelector('.chat-container');
+
+const themeButton = document.querySelector('#theme-btn');
+
+const deleteButton = document.querySelector('#delete-btn');
+
+let userText = null;
+
+const loadDataFromLocalstorage = () => {
+
+  const giftedte = localStorage.getItem('themeColor');
+
+  document.body.classList.toggle('light-mode', giftedte === 'light_mode');
+
+  themeButton.innerText = document.body.classList.contains('light-mode') ? 'light_mode' : 'light_mode';
+
+  chatContainer.innerHTML = localStorage.getItem('all-chats') || "<div class=\"default-text\">\n                            <h1>𝐆𝐢𝐟𝐭𝐞𝐝 𝐂𝐡𝐚𝐭 𝐆𝐩𝐭-𝟒</h1>\n                            <p>𝘾𝙤𝙙𝙚𝙙 𝘽𝙮 𝙗𝙮 𝙂𝙞𝙛𝙩𝙚𝙙 𝙈𝙖𝙪𝙧𝙞𝙘𝙚</p> </div>";
+
+  chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+};
+
+const createChatElement = (xx, yy) => {
+
+  const zz = document.createElement('div');
+
+  zz.classList.add('chat', yy);
+
+  zz.innerHTML = xx;
+
+  return zz;
+
+};
+
+const getChatResponse = async fa => {
+
+
+  let GiftedApiUrl = 'https://api.prabath-md.tech/api/gptv1?q=' + userText;
+
+      //}
+
+  const giftedtek = document.createElement('p');
+
+  try {
+
+    const giftech = await fetch(GiftedApiUrl);
+
+    if (!giftech.ok) {
+
+      throw new Error('Error from Gifted APi');
+
+    }
+
+    const giftedke = await giftech.json();
+
+    const giftedtekke = giftedke.data;
+
+    giftedtek.textContent = giftedtekke;
+
+  } catch (error) {
+
+    giftedtek.classList.add('error');
+
+    giftedtek.textContent = 'Oops! Something went wrong while Communicating with Gifyed Api. Please try Again Later.';
+
+  }
+
+  fa.querySelector('.typing-animation').remove();
+
+  fa.querySelector('.chat-details').appendChild(giftedtek);
+
+  localStorage.setItem('all-chats', chatContainer.innerHTML);
+
+  chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+};
+
+const showTypingAnimation = () => {
+
+  const giftted = createChatElement("<div class=\"chat-content\">\n                    <div class=\"chat-details\">\n                        <img src=\"https://assets.giftedtechnexus.co.ke/images/qr1/gpt4.png\" alt=\"chatbot-img\">\n                        <div class=\"typing-animation\">\n                            <div class=\"typing-dot\" style=\"--delay: 0.2s\"></div>\n                            <div class=\"typing-dot\" style=\"--delay: 0.3s\"></div>\n                            <div class=\"typing-dot\" style=\"--delay: 0.4s\"></div>\n                        </div>\n                    </div>\n                    <span onclick=\"copyResponse(this)\" class=\"material-symbols-rounded\">content_copy</span>\n                </div>", 'incoming');
+
+  chatContainer.appendChild(giftted);
+
+  chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+  getChatResponse(giftted);
+
+};
+
+const handleOutgoingChat = () => {
+
+  userText = chatInput.value.trim();
+
+  if (!userText) {
+
+    return;
+
+  }
+
+  chatInput.value = '';
+
+  chatInput.style.height = initialInputHeight + 'px';
+
+  const _0xe017c8 = "<div class=\"chat-content\">\n                    <div class=\"chat-details\">\n                        <img src=\"https://assets.giftedtechnexus.co.ke/images/gpt4/gifted.png\" alt=\"user-img\">\n                        <p>" + userText + "</p>\n                    </div>\n                </div>";
+
+  const _0x46f326 = createChatElement(_0xe017c8, 'outgoing');
+
+  chatContainer.querySelector('.default-text')?.remove();
+
+  chatContainer.appendChild(_0x46f326);
+
+  chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+  setTimeout(showTypingAnimation, 500);
+
+};
+
+deleteButton.addEventListener('click', () => {
+
+  if (confirm('Are you sure you want to delete all the chats?')) {
+
+    localStorage.removeItem('all-chats');
+
+    loadDataFromLocalstorage();
+
+  }
+
+});
+
+themeButton.addEventListener('click', () => {
+
+  document.body.classList.toggle('light-mode');
+
+  localStorage.setItem('themeColor', themeButton.innerText);
+
+  themeButton.innerText = document.body.classList.contains('light-mode') ? 'light_mode' : 'light_mode';
+
+});
+
+const initialInputHeight = chatInput.scrollHeight;
+
+chatInput.addEventListener('input', () => {
+
+  chatInput.style.height = initialInputHeight + 'px';
+
+  chatInput.style.height = chatInput.scrollHeight + 'px';
+
+});
+
+chatInput.addEventListener('keydown', _0x174fe5 => {
+
+  if (_0x174fe5.key === 'Enter' && !_0x174fe5.shiftKey && window.innerWidth > 800) {
+
+    _0x174fe5.preventDefault();
+
+    handleOutgoingChat();
+
+  }
+
+});
+
+loadDataFromLocalstorage();
+
+sendButton.addEventListener('click', handleOutgoingChat);
+
+    	</script>
 
 </body>
 
