@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Portofolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <!----Font awesome cdn  font icon css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+     <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <div class="logo">
+                    <i class="fa-solid fa-r"></i>
+                    <div class="logo-text">Gifted Tech</div>
+                </div>
+               <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+               <ul class='navlinks'>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolios">Portfolio</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li>
+                <a href="/resume.pdf" target="_blank">
+                  <button class="btn">Resume</button>
+                </a>
+              </li>
+            </ul>
+                </nav>    
+       
+
+                
+            </header>
+            <div class="container">
+                 <div class="hero-pic">
+                    <img src="https://github.com/mouricedevs.png?length=70width=50" alt="Gifted Tech">
+                 </div>
+                 <div class="hero-text">
+                    <h5>Hi I'm <span class="input">FullStack Developer</span></h5>
+                    <h1>Gifted Maurice</h1>
+                    <p> Moi University Student without skills, and only solo learns about codes, no experience, I only  know the basics!
+                    </p>
+
+                    <div class="btn-group">
+                       <a href="https://youtube.com/@giftedtechnexus" class="btn active">Subscribe</a>
+                       <a href="https://wa.me/254728782591" class="btn">Contact</a>
+                    </div>
+
+                    <div class="social">
+                        <a href="https://youtube.com/@giftedtechnexus"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://instagram. com/giftedtechnexus"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/254728782591"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                 </div>
+            </div>
+        </div>
+     </div>
+     <!---typed js for typing text effect-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+     <script>
+        /** creating button click show hide navbar **/
+        var togglebtn=document.querySelector(".togglebtn");
+        var nav=document.querySelector(".navlinks");
+        var links=document.querySelector(".navlinks li");
+
+        togglebtn.addEventListener("click", function(){
+            this.classList.toggle("click");
+            nav.classList.toggle("open");
+        })
+
+        var typed=new Typed(".input",{
+            strings:["FullStack Developer","Student","Hobby Programmer","Web Developer"],
+            typedSpeed:70,
+            backSpeed:55,
+            loop:true
+        })
+     </script>
+</body>
+</html>
