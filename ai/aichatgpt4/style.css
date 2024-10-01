@@ -8,8 +8,8 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f4f8;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
 }
 
@@ -17,30 +17,26 @@ body {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 900px;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 90vh;
+  flex-grow: 1;
 }
 
 .chat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.chat-header h1 {
-  margin: 0 auto;
-  text-align: center;
   font-size: 24px;
   color: #333;
 }
 
 .chat-box {
-  flex-grow: 1;
+  height: 400px;
   background: #eaf6ff;
   border-radius: 8px;
   padding: 10px;
@@ -50,33 +46,21 @@ body {
   gap: 10px;
 }
 
-.message, .response {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-}
-
 .message {
-  align-self: flex-end;
-}
-
-.message .text {
+  padding: 10px;
   background-color: #0084ff;
   color: white;
-  padding: 10px;
   border-radius: 8px;
+  align-self: flex-end;
   max-width: 70%;
 }
 
 .response {
-  align-self: flex-start;
-}
-
-.response .text {
+  padding: 10px;
   background-color: #f1f0f0;
   color: #333;
-  padding: 10px;
   border-radius: 8px;
+  align-self: flex-start;
   max-width: 70%;
 }
 
@@ -84,11 +68,6 @@ img.user-pic, img.ai-pic {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-}
-
-.chat-input-container {
-  display: flex;
-  gap: 10px;
 }
 
 #chat-input {
@@ -138,4 +117,24 @@ body.dark #theme-icon {
 
 #theme-icon {
   content: url('https://cdn-icons-png.flaticon.com/512/869/869869.png');
-} 
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #0084ff;
+}
