@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 900px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 90vh;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.chat-box {
+  flex-grow: 1;
+  background: #eaf6ff;
+  border-radius: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message, .response {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.message {
+  align-self: flex-end;
+}
+
+.message .text {
+  background-color: #0084ff;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.response {
+  align-self: flex-start;
+}
+
+.response .text {
+  background-color: #f1f0f0;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+img.user-pic, img.ai-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 10px;
+}
+
+#chat-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: calc(100% - 60px);
+}
+
+#send-btn {
+  padding: 10px;
+  background-color: #0084ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 50px;
+}
+
+#send-btn:hover {
+  background-color: #006bb3;
+}
+
+/* Dark mode */
+body.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark .chat-container {
+  background-color: #1e1e1e;
+}
+
+body.dark #chat-input {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
+body.dark .chat-box {
+  background-color: #2c2c2c;
+}
+
+body.dark #theme-icon {
+  content: url('https://cdn-icons-png.flaticon.com/512/1164/1164954.png');
+}
+
+#theme-icon {
+  content: url('https://cdn-icons-png.flaticon.com/512/869/869869.png');
+} 
