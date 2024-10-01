@@ -36,9 +36,9 @@ body {
 }
 
 .chat-box {
-  height: 400px;
+  height: 500px;
   background: #eaf6ff;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 10px;
   overflow-y: auto;
   display: flex;
